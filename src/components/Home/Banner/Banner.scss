@@ -1,0 +1,56 @@
+@import "../../../config.scss";
+
+.banner_wraper {
+  padding-top: 70px;
+  color: #fff;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .banner_info {
+    h1 {
+      font-size: 2.5rem;
+      font-family: $styledFont;
+      padding-bottom: 1rem;
+      letter-spacing: 0.4rem;
+      span {
+        font-family: $styledFont;
+        color: $primaryColor;
+      }
+    }
+    p {
+      color: #d3d3d3;
+      width: 100%;
+      max-width: 800px;
+      padding-bottom: 2.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-right: 1rem;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .banner_wraper {
+    flex-direction: column;
+    h1 {
+      padding-top: 1rem;
+      font-size: 2rem !important;
+    }
+    img {
+      object-fit: cover;
+      height: 400px;
+      object-position: 0px 10%;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .banner_wraper {
+    h1 {
+      font-size: 1.6rem !important;
+    }
+  }
+}

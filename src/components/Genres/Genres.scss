@@ -1,0 +1,32 @@
+@import "../../config.scss";
+
+.genres_wraper {
+  background: $ternaryColor;
+  width: 100%;
+  padding-top: 100px;
+  color: #fff;
+  height: 100%;
+  min-height: 100vh;
+  .category_wraper_headline {
+    padding: 0.75rem 0;
+    h3 {
+      position: relative;
+      color: $primaryColor;
+      &::after {
+        width: 200px;
+        height: 7px;
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: -2rem;
+        z-index: 0;
+        background: -webkit-radial-gradient(
+          50% 50%,
+          ellipse closest-side,
+          #3bc8e7,
+          rgba(255, 42, 112, 0) 60%
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+// Colors
+$primaryColor: #3bc8e7;
+$secondaryColor: #1b2039;
+$ternaryColor: #14182a;
+// background overlay
+$bgOverlay: -webkit-linear-gradient(
+  90deg,
+  rgb(22, 26, 46) 0%,
+  rgb(237, 63, 179) 0%,
+  rgb(59, 200, 231) 0%,
+  rgba(32, 167, 196, 0) 100%
+);
+// Fonts
+$primaryFont: "Josefin Sans", sans-serif;
+$secondaryFont: "Roboto Condensed", sans-serif;
+$ternaryFont: "Cormorant Upright", serif;
+$styledFont: "Righteous", cursive;
+// backgrounds
+$linearBg: #c02afe linear-gradient(90deg, #c02afe, #562afe);
+$genresOverlay: -webkit-linear-gradient(
+  90deg,
+  rgb(22, 26, 46) 0%,
+  rgb(237, 63, 179) 0%,
+  rgb(59, 200, 231) 0%,
+  rgba(32, 167, 196, 0) 100%
+);
+// footer-title-bottom
+.main_title {
+  &::after {
+    width: 100%;
+    height: 7px;
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0rem;
+    z-index: 0;
+    background: -webkit-radial-gradient(
+      50% 50%,
+      ellipse closest-side,
+      #3bc8e7,
+      rgba(255, 42, 112, 0) 60%
+    );
+  }
+}
+* {
+  box-sizing: border-box;
+}
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &.round_btn {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  &.primary_btn {
+    background: $primaryColor;
+    color: #fff;
+    &:hover {
+      transition: all 250ms ease-in-out;
+      background: #fff;
+      color: $primaryColor;
+    }
+  }
+}
+input {
+  border-radius: 0.3rem;
+  border: 1px solid #d3d3d3;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: $primaryFont;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style-type: none;
+  }
+}
+.container {
+  width: 100%;
+  padding-left: 10rem;
+  padding-right: 4rem;
+  margin: 0 auto;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+// slick-active
+.slick-dots {
+  li {
+    &.slick-active {
+      button {
+        &::before {
+          font-size: 6px;
+          line-height: 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          content: "•";
+          font-size: 1rem;
+          text-align: center;
+
+          color: $primaryColor !important;
+        }
+      }
+    }
+    button {
+      &::before {
+        font-size: 6px;
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        content: "•";
+        font-size: 1rem;
+        text-align: center;
+        opacity: 0.25;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .container {
+    width: auto;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

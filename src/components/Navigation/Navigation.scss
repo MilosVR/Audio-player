@@ -1,0 +1,122 @@
+@import "../../config.scss";
+
+.navigation_wraper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  background: $secondaryColor;
+  z-index: 999;
+  .navigation_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .search_songs_form {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    padding-right: 1rem;
+    form {
+      display: flex;
+      width: 100%;
+      input {
+        width: 100%;
+        &::placeholder {
+          font-family: $primaryFont;
+          opacity: 1;
+          font-style: italic;
+        }
+        padding: 0.5rem;
+        border-radius: 0.5rem 0rem 0rem 0.5rem;
+      }
+      button {
+        background: $primaryColor;
+        padding: 0.5rem;
+        border: 1px solid $primaryColor;
+        border-radius: 0rem 0.5rem 0.5rem 0rem;
+        i {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .navigation_headline {
+    color: #fff;
+    span {
+      color: $primaryColor;
+    }
+  }
+  .navigation_btns {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background: $primaryColor;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      &:hover {
+        background: #fff;
+        color: $primaryColor;
+        transition: all 250ms ease-in-out;
+      }
+    }
+  }
+  .hamburger_menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .navigation_headline {
+    display: none !important;
+  }
+  .search_songs_form {
+    width: 50% !important;
+  }
+  .navigation_btns {
+    width: 50% !important;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .navigation_btns {
+    button {
+      display: none;
+    }
+  }
+  .hamburger_menu {
+    display: flex !important;
+    width: 2.3rem;
+    height: 2rem;
+    padding: 0.3rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+    span {
+      transition: all 250ms ease-in-out;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+    }
+    &.toggle_hamburger_menu {
+      justify-content: center;
+      span {
+        transition: all 250ms ease-in-out;
+        &:nth-child(1) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          display: none !important;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          margin-top: -1px;
+        }
+      }
+    }
+  }
+}

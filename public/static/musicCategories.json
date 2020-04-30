@@ -1,0 +1,62 @@
+[
+  {
+    "id": "0",
+    "category": "Romantic",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img1.jpg"
+  },
+  {
+    "id": "1",
+    "category": "Classic",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img2.jpg"
+  },
+  {
+    "id": "2",
+    "category": "Hip-Hop",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img3.jpg"
+  },
+  {
+    "id": "3",
+    "category": "Rock",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img4.jpg"
+  },
+  {
+    "id": "4",
+    "category": "Dancing",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img5.jpg"
+  },
+  {
+    "id": "5",
+    "category": "EDM",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img6.jpg"
+  },
+  {
+    "id": "6",
+    "category": "Jazz",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img7.jpg"
+  },
+  {
+    "id": "7",
+    "category": "Metal",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img8.jpg"
+  },
+  {
+    "id": "8",
+    "category": "Pop",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img9.jpg"
+  },
+  {
+    "id": "9",
+    "category": "Gratest Hits",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img13.jpg"
+  },
+  {
+    "id": "10",
+    "category": "Love",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img11.jpg"
+  },
+  {
+    "id": "11",
+    "category": "Soul",
+    "category_img": "http://kamleshyadav.com/html/miraculous/version1/images/genrs/img12.jpg"
+  }
+]

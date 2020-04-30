@@ -1,0 +1,117 @@
+@import "../../config.scss";
+
+.artists_wraper {
+  background: $ternaryColor;
+  padding-top: 100px;
+  height: 100%;
+  min-height: 100vh;
+  color: #fff;
+  .artists_wraper_headline {
+    padding: 0.75rem 0;
+    h3 {
+      position: relative;
+      color: $primaryColor;
+      &::after {
+        width: 200px;
+        height: 7px;
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: -2rem;
+        z-index: 0;
+        background: -webkit-radial-gradient(
+          50% 50%,
+          ellipse closest-side,
+          #3bc8e7,
+          rgba(255, 42, 112, 0) 60%
+        );
+      }
+    }
+    p {
+      color: #fff;
+      font-size: 0.9rem;
+    }
+  }
+  .artists_wraper_grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    .artists_wraper_grid_item {
+      padding: 1.5rem;
+      h4 {
+        padding-top: 1rem;
+      }
+      &:hover {
+        .artists_wraper_grid_item_info {
+          h4 {
+            color: $primaryColor !important;
+            transition: all 350ms ease-in-out;
+          }
+        }
+      }
+      .artists_wraper_grid_item_image {
+        position: relative;
+        margin: 0 auto;
+        width: auto;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0;
+          opacity: 0;
+          transition: all 300ms ease-in-out;
+        }
+        &:hover {
+          .img_play {
+            opacity: 1;
+            width: 20%;
+            transition: all 350ms ease-in-out;
+            z-index: 5;
+          }
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 1;
+            background: $genresOverlay;
+            z-index: 2;
+            transition: all 350ms ease-in-out;
+            cursor: pointer;
+            border-radius: 0.5rem;
+          }
+        }
+        .img_play {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          width: 100%;
+          transition: all 350ms ease-in-out;
+        }
+        img {
+          width: 100%;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .artists_wraper_grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .artists_wraper_grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .artists_wraper_grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,94 @@
+@import "../../../config.scss";
+
+.recently_played {
+  padding: 2rem 0;
+  .recently_played_headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    h3 {
+      position: relative;
+      color: $primaryColor;
+    }
+    p {
+      color: #fff;
+      font-size: 0.9rem;
+    }
+  }
+  .recently_played_slider {
+    width: 100%;
+    .recently_played_slide_item {
+      padding: 1.5rem;
+      &:hover {
+        .recently_played_slide_info {
+          h4 {
+            color: $primaryColor !important;
+            transition: all 350ms ease-in-out;
+          }
+        }
+      }
+      .recently_played_image {
+        position: relative;
+        margin: 0 auto;
+        width: auto;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0;
+          opacity: 0;
+          transition: all 300ms ease-in-out;
+        }
+        &:hover {
+          .img_play {
+            opacity: 1;
+            width: 20%;
+            transition: all 350ms ease-in-out;
+            z-index: 5;
+          }
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 1;
+            background: $genresOverlay;
+            z-index: 2;
+            transition: all 350ms ease-in-out;
+            cursor: pointer;
+            border-radius: 0.5rem;
+          }
+        }
+        .img_play {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          width: 100%;
+          transition: all 350ms ease-in-out;
+        }
+        img {
+          width: 100%;
+          border-radius: 0.5rem;
+        }
+      }
+      .recently_played_slide_info {
+        h4 {
+          color: #fff;
+          padding: 0.5rem 0;
+          margin: 0;
+        }
+        p {
+          padding: 0.3rem 0;
+          margin: 0;
+          color: #d3d3d3;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

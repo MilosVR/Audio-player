@@ -1,0 +1,211 @@
+@import "../../config.scss";
+
+.side_menu {
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 80px;
+  background: $secondaryColor;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  color: #fff;
+  box-shadow: 3px 0px 13px -2px rgba(0, 0, 0, 0.75);
+  &.open_side_menu {
+    width: 200px;
+    img {
+      width: 5rem !important;
+    }
+    .logo_image {
+      span {
+        transition: all 500ms ease-in-out;
+        opacity: 1;
+      }
+    }
+    .side_menu_nav_link {
+      justify-content: flex-start !important;
+    }
+    .side_menu_nav_link {
+      transition: 200ms ease-in-out;
+      p {
+        display: block !important;
+      }
+    }
+    .open_side_menu_btn {
+      position: absolute;
+      top: 50%;
+      left: 175px;
+      height: 3.5rem;
+      width: 3rem;
+      transform: translate(0, -3rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $secondaryColor;
+      cursor: pointer;
+      border-radius: 50%;
+      i {
+      }
+    }
+    .fa-angle-left {
+      display: block !important;
+    }
+    .fa-angle-right {
+      display: none !important;
+    }
+  }
+  .logo_image {
+    position: relative;
+    top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    span {
+      padding: 1rem 0;
+      color: #fff;
+      opacity: 0;
+    }
+    img {
+      width: 3rem;
+      border-radius: 50%;
+    }
+  }
+  .side_menu_nav_links {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 100%;
+    .side_menu_nav_link {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid #252b4d;
+      width: 90%;
+      cursor: pointer;
+      &:hover {
+        background: $primaryColor;
+        transition: all 250ms ease-in-out;
+        border-bottom: 2px solid $primaryColor;
+      }
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        margin: 0 0.5rem;
+        font-size: 1.2rem;
+      }
+      p {
+        padding: 0;
+        margin: 0;
+        display: none;
+      }
+    }
+  }
+  .open_side_menu_btn {
+    position: absolute;
+    top: 50%;
+    left: 55px;
+    height: 3.5rem;
+    width: 3rem;
+    transform: translate(0, -3rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $secondaryColor;
+    cursor: pointer;
+    border-radius: 50%;
+    .fa-angle-left {
+      display: none;
+    }
+    .fa-angle-right {
+      display: block;
+    }
+  }
+  .login_register_btns {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translate(-50%);
+    .login_register_btns_divider {
+      margin: 0.5rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: $secondaryColor;
+      border: 2px solid $ternaryColor;
+      color: #fff;
+      &:hover {
+        background: #fff;
+        color: $ternaryColor;
+        transition: all 250ms ease-in-out;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .login_register_btns {
+    opacity: 1 !important;
+  }
+  .side_menu {
+    width: 200px;
+    transform: translate3d(-600px, 0, 0);
+    transition: all 250ms ease-in-out;
+    &.toggle_hamburger_menu {
+      transform: translate3d(0, 0, 0);
+      transition: all 250ms ease-in-out;
+    }
+    img {
+      width: 5rem !important;
+    }
+    .logo_image {
+      span {
+        transition: all 500ms ease-in-out;
+        opacity: 1;
+      }
+    }
+    .side_menu_nav_link {
+      justify-content: flex-start !important;
+    }
+    .side_menu_nav_link {
+      transition: 200ms ease-in-out;
+      p {
+        display: block !important;
+      }
+    }
+    .open_side_menu_btn {
+      position: absolute;
+      top: 50%;
+      left: 175px;
+      height: 3.5rem;
+      width: 3rem;
+      transform: translate(0, -3rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $secondaryColor;
+      cursor: pointer;
+      border-radius: 50%;
+      i {
+      }
+    }
+    .fa-angle-left {
+      display: block !important;
+    }
+    .fa-angle-right {
+      display: none !important;
+    }
+  }
+  .open_side_menu_btn {
+    display: none !important;
+  }
+}
