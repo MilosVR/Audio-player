@@ -16,39 +16,7 @@
     background: $secondaryColor;
     padding: 1rem;
     .current_song_title {
-      width: 100%;
       p {
-      }
-    }
-    .song_slider {
-      width: 100%;
-      -webkit-appearance: none;
-      width: 100%;
-      height: 5px;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      background: #fff;
-      outline: none;
-      opacity: 0.7;
-      -webkit-transition: 0.2s;
-      transition: opacity 0.2s;
-
-      &::-webkit-slider-thumb {
-        border-radius: 50% !important;
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        background: $primaryColor;
-        cursor: pointer;
-      }
-    }
-    .time_and_duration {
-      display: flex;
-      justify-content: space-between;
-      .current_time {
-      }
-      .duration {
       }
     }
     .controllers {
@@ -56,6 +24,71 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      position: relative;
+      &.toggle_player {
+        height: calc(100vh - 85px);
+        // justify-content: center;
+        flex-direction: column !important;
+        .toggle_player_options {
+          top: 20px;
+          left: 0;
+          right: unset !important;
+          transform: rotate(180deg);
+        }
+        .full_song_info {
+          width: 100%;
+          height: 1rem;
+          overflow: hidden;
+        }
+        .song_progress {
+          width: 100%;
+        }
+        .current_time_and_duration {
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: translate(0, 0);
+        }
+        .main_controllers {
+          position: relative !important;
+          justify-content: center;
+          width: 100%;
+          top: 0;
+          left: 0;
+          transform: translate(0, 0);
+          padding-bottom: 2rem;
+        }
+        .adjust_volume {
+          display: flex !important;
+          padding-bottom: 2rem;
+        }
+        .next_song_title {
+          display: flex !important;
+          width: 100% !important;
+        }
+        .current_song_img {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 2rem;
+          // border: 1px solid red;
+          // width: 100%;
+          // height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+        .song_slider {
+          &::-webkit-slider-thumb {
+            display: block;
+          }
+        }
+      }
+      .current_song_img {
+        display: none;
+      }
       i {
         box-shadow: 0px 0px 0px -0px $primaryColor;
         transition: all 200ms ease-in-out;
@@ -114,10 +147,55 @@
         }
       }
     }
+    .song_progress {
+      display: flex;
+      flex-direction: column;
+      .current_time_and_duration {
+        .slider_progress_wraper {
+          position: relative;
+          .song_slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            background: #fff;
+            outline: none;
+            -webkit-transition: 0.2s;
+            transition: opacity 0.2s;
+            &::-webkit-slider-thumb {
+              border-radius: 50% !important;
+              -webkit-appearance: none;
+              appearance: none;
+              width: 25px;
+              height: 25px;
+              background: $primaryColor;
+              z-index: 10;
+              cursor: pointer;
+            }
+          }
+          .slider_progress {
+            position: absolute;
+            width: 0%;
+            height: 5px;
+            background: $primaryColor;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+          }
+        }
+
+        .time_and_duration {
+          display: flex;
+          justify-content: space-between;
+          .current_time {
+          }
+          .duration {
+          }
+        }
+      }
+    }
     .volume_slider {
-      width: 100%;
       -webkit-appearance: none;
-      width: 100%;
       height: 5px;
       background: #fff;
       outline: none;
@@ -138,6 +216,7 @@
     }
     .next_song_title {
       padding: 1rem 0;
+      width: 250px;
       .next_song {
         display: flex;
         .next_song_artist {
@@ -155,17 +234,99 @@
       }
     }
   }
+  .toggle_player_options {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .next_song_title {
+    display: none !important;
+  }
 }
 @media only screen and (max-width: 900px) {
   .player_wraper {
     padding-left: 0rem;
   }
-}
-@media only screen and (max-width: 768px) {
-  .controllers {
-    flex-flow: wrap-row;
+  .adjust_volume {
+    display: none !important;
   }
-  .next_song_title {
-    display: none;
+
+  .song_progress {
+    justify-content: center;
+    align-items: center;
+    .current_song_title {
+      margin-top: 1rem;
+    }
+  }
+  .current_time_and_duration {
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .main_controllers {
+    position: absolute !important;
+    top: -25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .fa-step-backward {
+      background: $secondaryColor;
+    }
+    .fa-step-forward {
+      background: $secondaryColor;
+    }
+    .play_pause_song {
+      i {
+        &:nth-child(1) {
+          background: $secondaryColor;
+        }
+        &:nth-child(2) {
+          background: $secondaryColor;
+        }
+      }
+    }
+  }
+  .song_slider {
+    &::-webkit-slider-thumb {
+      display: none;
+    }
+  }
+  .toggle_player_options {
+    display: flex !important;
+    position: absolute;
+    right: 0;
+    top: -50%;
+    transform: translate(0, -50%);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    i {
+      // background: $secondaryColor;
+      width: 50px;
+      height: 25px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      background: $secondaryColor;
+      text-align: center;
+      padding-top: 0.3rem;
+      border: 1px solid #fff;
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .controllers {
+    &.toggle_player {
+      justify-content: center !important;
+      .current_song_img {
+        img {
+          width: 8rem !important;
+          height: 8rem !important;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 }

@@ -17,6 +17,10 @@ const Player = (props) => {
     const pause_btn = document.querySelector(".fa-pause");
     const nextSongBtn = document.querySelector(".fa-step-forward");
     const prevSongBtn = document.querySelector(".fa-step-backward");
+    const current_song_img = document.querySelector(".current_song_img");
+    const toggle_player_options = document.querySelector(
+      ".toggle_player_options"
+    );
 
     const player = document.querySelector("#player");
 
@@ -25,8 +29,10 @@ const Player = (props) => {
 
     if (props.songs.length !== 0) {
       player.src = props.songs[0].song;
-      current_song_title.textContent =
-        songs[currentSong].artist + " - " + songs[currentSong].title;
+      current_song_img.innerHTML = `<img alt='' src=${songs[currentSong].artist_img}></img>`;
+      current_song_title.innerHTML = `<p class='full_song_info'>${
+        songs[currentSong].artist + " - " + songs[currentSong].title
+      }</p>`;
       next_song_title.innerHTML = `
       <div class='next_song'>
         <img src=${
@@ -44,7 +50,7 @@ const Player = (props) => {
         </div>
       </div>
       `;
-      setTimeout(showDuration, 1000);
+      setInterval(showDuration, 100);
     } else {
       return;
     }
@@ -71,8 +77,10 @@ const Player = (props) => {
 
     function loadSong() {
       player.src = songs[currentSong].song;
-      current_song_title.textContent =
-        songs[currentSong].artist + " - " + songs[currentSong].title;
+      current_song_img.innerHTML = `<img alt='' src=${songs[currentSong].artist_img}></img>`;
+      current_song_title.innerHTML = `<p class='full_song_info'>${
+        songs[currentSong].artist + " - " + songs[currentSong].title
+      }</p>`;
       next_song_title.innerHTML = `
       <div class='next_song'>
         <img src=${
@@ -91,18 +99,30 @@ const Player = (props) => {
       </div>
       `;
 
-      setTimeout(showDuration, 1000);
+      setInterval(showDuration, 100);
     }
-    setInterval(updateSongSlider, 1000);
+    setInterval(updateSongSlider, 100);
 
     function updateSongSlider() {
       var c = Math.round(player.currentTime);
-      song_slider.value = c;
-      current_time.textContent = convertTime(c);
+      current_time.innerHTML = `<p>${convertTime(c)}</p>`;
+
       if (player.ended) {
         playNextSong();
       }
     }
+
+    function updateProgressSlider() {
+      const slider_progress = document.querySelector(".slider_progress");
+      var c = Math.round(player.currentTime);
+      var d = Math.floor(player.duration);
+      song_slider.value = c;
+      let percentage = c / d;
+      let progress = 100 * percentage;
+
+      slider_progress.style.width = `${progress}%`;
+    }
+    let intervalProgress = setInterval(updateProgressSlider, 100);
 
     function convertTime(secs) {
       var min = Math.floor(secs / 60);
@@ -115,7 +135,7 @@ const Player = (props) => {
     function showDuration() {
       var d = Math.floor(player.duration);
       song_slider.setAttribute("max", d);
-      duration.textContent = convertTime(d);
+      duration.innerHTML = `<p>${convertTime(d)}</p>`;
     }
 
     const playSong = () => {
@@ -160,6 +180,16 @@ const Player = (props) => {
       player.play();
     };
 
+    const togglePlayer = (e) => {
+      const controllers = document.querySelector(".controllers");
+      if (!controllers.classList.contains("toggle_player")) {
+        return controllers.classList.add("toggle_player");
+      } else {
+        return controllers.classList.remove("toggle_player");
+      }
+    };
+
+    toggle_player_options.addEventListener("click", togglePlayer);
     prevSongBtn.addEventListener("click", prevNextSong);
     nextSongBtn.addEventListener("click", playNextSong);
     pause_btn.addEventListener("click", pauseSong);
@@ -168,6 +198,9 @@ const Player = (props) => {
     volume_slider.addEventListener("input", adjustVolume);
 
     return () => {
+      clearInterval(intervalProgress);
+      toggle_player_options.removeEventListener("click", togglePlayer);
+      prevSongBtn.removeEventListener("click", prevNextSong);
       nextSongBtn.removeEventListener("click", playNextSong);
       pause_btn.removeEventListener("click", pauseSong);
       play_btn.removeEventListener("click", playSong);
@@ -180,18 +213,27 @@ const Player = (props) => {
     <div className="player_wraper">
       <div className="player">
         <audio id="player"> </audio>
-        <div className="current_song_title">
-          <p>Current Song Title</p>
-        </div>
-        <input type="range" min="0" step="1" className="song_slider" />
-        <div className="time_and_duration">
-          <div className="current_time">00:00</div>
-          <div className="duration">00:00</div>
-        </div>
         <div className="controllers">
-          <div className="next_song_title">
-            <p>Next Song Title</p>
+          <div className="current_song_img"></div>
+          <div className="toggle_player_options">
+            <i className="fas fa-angle-up"></i>
           </div>
+          <div className="song_progress">
+            <div className="current_song_title">
+              <p>Current Song Title</p>
+            </div>
+            <div className="current_time_and_duration">
+              <div className="slider_progress_wraper">
+                <div className="slider_progress"></div>
+                <input type="range" min="0" step="1" className="song_slider" />
+              </div>
+              <div className="time_and_duration">
+                <div className="current_time">00:00</div>
+                <div className="duration">00:00</div>
+              </div>
+            </div>
+          </div>
+
           <div className="main_controllers">
             <i className="fas fa-step-backward"></i>
             <div className="play_pause_song">
@@ -211,6 +253,9 @@ const Player = (props) => {
               defaultValue="0.5"
             />
             <i className="fas fa-volume-up"></i>
+          </div>
+          <div className="next_song_title">
+            <p>Next Song Title</p>
           </div>
         </div>
       </div>

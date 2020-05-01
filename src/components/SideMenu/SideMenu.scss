@@ -209,3 +209,24 @@
     display: none !important;
   }
 }
+@media only screen and (max-width: 500px) {
+  .side_menu {
+    width: 300px;
+    transform: translate3d(-600px, 0, 0);
+    transition: all 250ms ease-in-out;
+    &.toggle_hamburger_menu {
+      transform: translate3d(0, 0, 0);
+      transition: all 250ms ease-in-out;
+    }
+    img {
+      width: 3rem !important;
+    }
+    .login_register_btns {
+      flex-direction: row;
+      bottom: 3rem;
+      .login_register_btns_divider {
+        margin: 0 1rem;
+      }
+    }
+  }
+}

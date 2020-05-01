@@ -12,32 +12,53 @@ const SideMenu = () => {
     }
   };
 
+  const closeSideMenu = (e) => {
+    const side_menu = document.querySelector(".side_menu");
+    const hamburger_menu = document.querySelector(".hamburger_menu");
+
+    side_menu.classList.remove("toggle_hamburger_menu");
+    hamburger_menu.classList.remove("toggle_hamburger_menu");
+  };
+
   return (
     <div className="side_menu">
-      <Link to="/" className="side_menu_nav_link">
+      <Link to="/" className="side_menu_nav_link" onClick={closeSideMenu}>
         <div className="logo_image">
           <img src="/assets/logo.png" alt="" />
           <span>Heisenberg Music</span>
         </div>
       </Link>
       <div className="side_menu_nav_links">
-        <Link to="/" className="side_menu_nav_link">
+        <Link to="/" className="side_menu_nav_link" onClick={closeSideMenu}>
           <i className="fas fa-home"></i>
           <p>Home</p>
         </Link>
-        <Link to="/genres" className="side_menu_nav_link">
+        <Link
+          to="/genres"
+          className="side_menu_nav_link"
+          onClick={closeSideMenu}
+        >
           <i className="fas fa-record-vinyl"></i>
           <p>Genres</p>
         </Link>
-        <Link to="/artists" className="side_menu_nav_link">
+        <Link
+          to="/artists"
+          className="side_menu_nav_link"
+          onClick={closeSideMenu}
+        >
           <i className="fab fa-napster"></i>
           <p>Artists</p>
         </Link>
-        <Link to="/top-tracks" className="side_menu_nav_link">
+        <Link
+          to="/top-tracks"
+          className="side_menu_nav_link"
+          onClick={closeSideMenu}
+        >
           <i className="fas fa-music"></i>
           <p>Top tracks</p>
         </Link>
         <Link
+          onClick={closeSideMenu}
           to="/downloads"
           className="side_menu_nav_link"
           style={{ marginTop: "3rem" }}
@@ -45,15 +66,24 @@ const SideMenu = () => {
           <i className="fas fa-cloud-download-alt"></i>
           <p>Downloads</p>
         </Link>
-        <Link to="/liked" className="side_menu_nav_link">
+        <Link
+          to="/liked"
+          className="side_menu_nav_link"
+          onClick={closeSideMenu}
+        >
           <i className="far fa-heart"></i>
           <p>Favorites</p>
         </Link>
-        <Link to="/history" className="side_menu_nav_link">
+        <Link
+          to="/history"
+          className="side_menu_nav_link"
+          onClick={closeSideMenu}
+        >
           <i className="fas fa-history"></i>
           <p>History</p>
         </Link>
         <Link
+          onClick={closeSideMenu}
           to="/playlist"
           className="side_menu_nav_link"
           style={{ marginTop: "3rem" }}
